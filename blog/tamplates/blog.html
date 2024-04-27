@@ -1,0 +1,18 @@
+
+<h1>Страница блога c {{ blogs.count }} blog{{ blogs.count|pluralize }}</h1>
+<p>
+<a href = "{% url 'home' %}"><h2>Главная страница</h2></a>
+</p>
+<br>
+{% for blog in blogs %}
+<p>
+<a href="{{ url 'detail' }}">
+  <h2>{{ blog.tittle }}</h2>
+</a>
+</p>
+<a href="{% url 'home' %}"><h2>Тест</h2> </a>
+{{ blog.descriptions|striptags|truncatechars:100 }}
+
+<p>{{ blog.date|date:'M d Y'|upper }}</p>
+<br>
+{% endfor %}
